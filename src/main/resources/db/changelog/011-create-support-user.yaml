@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011-create-support-user
+      author: q4erty
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: support@acfs.kz
+              - column:
+                  name: password
+                  value: "$2a$10$gd7g/eUP128jhJ3ef4mcfOYasBYrKa6l4a7X5kqY6jl0BumBkplBy"
+              - column:
+                  name: enabled
+                  valueBoolean: true
+
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  valueComputed: "(SELECT id FROM users WHERE email='support@acfs.kz')"
+              - column:
+                  name: role_id
+                  valueComputed: "(SELECT id FROM roles WHERE name='SUPPORT')"

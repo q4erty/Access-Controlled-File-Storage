@@ -1,0 +1,1290 @@
+{
+	"info": {
+		"_postman_id": "0a712f57-72f7-41a1-84ba-5231899cf17e",
+		"name": "Final soft",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48734477"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Sign in Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.collectionVariables.set(\"admin_token\", json.token);",
+									"",
+									"console.log(\"Admin token saved to collection\");",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@acfs.kz\",\n    \"password\": \"admin12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Who I am",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/files/1/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"1",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename File Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filename\": \"CV.pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/files/1/rename",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"1",
+								"rename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role\": \"ADMIN\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/users/1/roles",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delere Role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/1/roles/ADMIN",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"roles",
+								"ADMIN"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disable User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/1/disable",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"disable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/users/1/enable",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"enable"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{admin_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Sign up",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nurtas.baizhanov@narxoz.kz\",\n    \"password\": \"test12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.collectionVariables.set(\"user_token\", json.token);",
+									"",
+									"console.log(\"User token saved to collection\");",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nurtas.baizhanov@narxoz.kz\",\n    \"password\": \"test12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newEmail\": \"test@test.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/users/email",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Folder Documents",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Documents\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/folders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Folder PDF",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"PDF\",\n    \"parentId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/folders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Folder Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Image\",\n    \"parentId\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/folders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Folder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/folders/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Root Folders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/folders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Folder Children",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/folders/1/subfolders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders",
+								"1",
+								"subfolders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Folders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/folders/my",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders",
+								"my"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Folder Name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Image\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/folders/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move Folder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"newParentId\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/folders/3/move",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders",
+								"3",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Folder",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/folders/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"folders",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/nurtas/Documents/CV_BAIZHANOV_NURTAS.pdf"
+								},
+								{
+									"key": "folderId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/files",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "File Metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/files/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/files/1/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"1",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "folderId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/files",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Files",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/files/my",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"my"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move File",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"folderId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/files/1/move",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"1",
+								"move"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rename File",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"filename\": \"CV.pdf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/files/1/rename",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"files",
+								"1",
+								"rename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test2@test.com\",\n    \"password\": \"test12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Give Permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fileId\": 1,\n  \"userId\": 2,\n  \"type\": \"WRITE\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/permissions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delere Permission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/permissions/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"permissions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Permissions certain User to certain File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/permissions/file/1/user/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"permissions",
+								"file",
+								"1",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Code",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "nurtas.baizhanov@narxoz.kz",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/password/reset/request",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"password",
+								"reset",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Code Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"nurtas.baizhanov@narxoz.kz\",\n    \"code\": 626538,\n    \"newPassword\": \"nurtas01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/password/reset/confirm",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"password",
+								"reset",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create request to Support",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"subject\": \"Ошибка при загрузке файла\",\n  \"question\": \"Когда я пытаюсь загрузить файл, получаю ошибку 404. Что делать?\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/support",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"support"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My requests to Support",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/support/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"support",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My request to Support",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/support/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"support",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{user_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Support",
+			"item": [
+				{
+					"name": "Sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();",
+									"",
+									"pm.collectionVariables.set(\"support_token\", json.token);",
+									"",
+									"console.log(\"User token saved to collection\");",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"support@acfs.kz\",\n    \"password\": \"test12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/support",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"support"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/support/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"support",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Answer Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"answer\": \"Проблема решена, обновите версию клиента.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/support/1/answer",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"support",
+								"1",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{support_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		},
+		{
+			"key": "user_token",
+			"value": ""
+		},
+		{
+			"key": "admin_token",
+			"value": ""
+		},
+		{
+			"key": "support_token",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-insert-admin
+      author: q4erty
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: admin@acfs.kz
+              - column:
+                  name: password
+                  value: "$2a$10$eAA5cbeIpwcTmDdLCV9Y8ec8l8oLVYXWQHBh22c1vWpC0uHGb3Mae"
+              - column:
+                  name: enabled
+                  valueBoolean: true

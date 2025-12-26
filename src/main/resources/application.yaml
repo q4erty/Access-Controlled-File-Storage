@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: access-controlled-file-storage
+
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.yaml
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL}
+    password: ${PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+file:
+  storage:
+    location: uploads
+
+jwt:
+  secret: afee9901edeabf57982dea6e11b5d920e4bed0424f9ede68eafb944766a41aa9
+  expiration: 86400000
+
+server:
+  port: 8080

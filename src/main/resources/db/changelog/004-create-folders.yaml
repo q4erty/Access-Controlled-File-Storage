@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-create-folders
+      author: q4erty
+      changes:
+        - createTable:
+            tableName: folders
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_folders
+
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: owner_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: parent_id
+                  type: BIGINT
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+
+        - addForeignKeyConstraint:
+            constraintName: fk_folders_owner
+            baseTableName: folders
+            baseColumnNames: owner_id
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            constraintName: fk_folders_parent
+            baseTableName: folders
+            baseColumnNames: parent_id
+            referencedTableName: folders
+            referencedColumnNames: id

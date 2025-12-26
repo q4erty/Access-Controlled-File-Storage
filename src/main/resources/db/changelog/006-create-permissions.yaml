@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-create-permissions
+      author: q4erty
+      changes:
+        - createTable:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_permissions
+
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: file_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+
+        - addUniqueConstraint:
+            tableName: permissions
+            columnNames: user_id, file_id, type
+            constraintName: uq_permissions_user_file_type
+
+        - addForeignKeyConstraint:
+            constraintName: fk_permissions_user
+            baseTableName: permissions
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            constraintName: fk_permissions_file
+            baseTableName: permissions
+            baseColumnNames: file_id
+            referencedTableName: files
+            referencedColumnNames: id
